@@ -11,4 +11,8 @@ class Dish extends Model
     {
         return $this->belongsTo('App\Vendor');
     }
+
+    public function detail(){
+        return $this->belongsTo('App\Detail');
+    }
 }

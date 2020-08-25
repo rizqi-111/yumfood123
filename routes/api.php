@@ -23,6 +23,10 @@ Route::prefix('v1')->group(function () {
 
 Route::GET('v1/dishes/getByVendor/{vendor}','DishController@getByVendor')->name('dishes.getByVendor');
 
+Route::prefix('v1')->group(function () {
+    Route::apiResource('orders','OrderController');
+});
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
