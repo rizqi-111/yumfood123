@@ -114,7 +114,7 @@ class DishController extends Controller
         return "Berhasil Hapus";
     }
 
-    public function getByVendor($id){
+    public function getByVendor($id){ //Time : 10 Menit
         $vendor = Vendor::find($id);
         return DishResource::collection(Dish::where('vendor_id',$id)->get());
         // return new DishResource(Dish::where('vendor_id',$id)->get()); 

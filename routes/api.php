@@ -21,6 +21,8 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('dishes','DishController');
 });
 
+Route::GET('v1/dishes/getByVendor/{vendor}','DishController@getByVendor')->name('dishes.getByVendor');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
