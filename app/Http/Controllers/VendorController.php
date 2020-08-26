@@ -15,9 +15,28 @@ class VendorController extends Controller
      *
      * @return AnonymousResourceCollection
      */
-    public function index()
+    public function index(Request $request)
     {
-        return VendorResource::collection(Vendor::paginate());
+        if($request['tags'][0] === null) {
+            return VendorResource::collection(Vendor::paginate());
+        }
+        else { //Time : 2 Jam
+            $tag_s = [];
+            foreach($request['tags'] as $t_name){
+                $tag = Tag::where('name',$t_name)->first();
+                $tag_s[] = $tag->id;
+            }
+
+            $category_ids = [6, 8];
+
+            $vendor = Vendor::whereHas('tags', function($query) use ($category_ids) {
+
+                $query->whereIn('id', $category_ids);
+
+            });
+
+            return $vendor->get();
+        }
     }
 
     /**
