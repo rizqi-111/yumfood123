@@ -42,10 +42,10 @@ class DishController extends Controller
     
         if(!$dish)
         {
-            return "gagal masuk";
+            return json_encode("gagal masuk");
         }
     
-        return "berhasil masuk";
+        return json_encode("berhasil masuk");
     }
 
     /**
@@ -82,10 +82,10 @@ class DishController extends Controller
     
         if(!$success)
         {
-            return "gagal ubah";
+            return json_encode("gagal ubah");
         }
     
-        return "berhasil ubah";
+        return json_encode("berhasil ubah");
 
     }
 
@@ -108,10 +108,10 @@ class DishController extends Controller
 
         if(!$success)
         {
-            return "Gagal Hapus";
+            return json_encode("Gagal Hapus");
         }
     
-        return "Berhasil Hapus";
+        return json_encode("Berhasil Hapus");
     }
 
     public function getByVendor($id){ //Time : 10 Menit

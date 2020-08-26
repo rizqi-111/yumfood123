@@ -35,7 +35,7 @@ class VendorController extends Controller
 
             });
 
-            return $vendor->get();
+            return $vendor->get()->toJson();
         }
     }
 
@@ -73,10 +73,10 @@ class VendorController extends Controller
     
         if(!$success)
         {
-            return "gagal masuk";
+            return json_encode("gagal masuk");
         }
     
-        return "berhasil masuk";
+        return json_encode("berhasil masuk");
     }
 
     /**
@@ -123,10 +123,10 @@ class VendorController extends Controller
     
         if(!$success)
         {
-            return "gagal ubah";
+            return json_encode("gagal ubah");
         }
     
-        return "berhasil ubah";
+        return json_encode("berhasil ubah");
 
     }
 
@@ -142,7 +142,7 @@ class VendorController extends Controller
         $vendor=Vendor::find($id);
         if(is_null($vendor))
         {
-            return "Tidak Ditemukan";
+            return json_encode("Tidak Ditemukan");
         }
     
         $success=$vendor->delete();
@@ -151,9 +151,9 @@ class VendorController extends Controller
 
         if(!$success)
         {
-            return "Berhasil Hapus Vendor, Tidak Ditemukan Taggable";
+            return json_encode("Berhasil Hapus Vendor, Tidak Ditemukan Taggable");
         }
     
-        return "Berhasil Hapus";
+        return json_encode("Berhasil Hapus");
     }
 }
