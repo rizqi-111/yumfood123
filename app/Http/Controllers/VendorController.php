@@ -24,14 +24,14 @@ class VendorController extends Controller
             $tag_s = [];
             foreach($request['tags'] as $t_name){
                 $tag = Tag::where('name',$t_name)->first();
-                $tag_s[] = $tag->id;
+                if($tag){
+                    $tag_s[] = $tag->id;
+                }
             }
 
-            $category_ids = [6, 8];
+            $vendor = Vendor::whereHas('tags', function($query) use ($tag_s) {
 
-            $vendor = Vendor::whereHas('tags', function($query) use ($category_ids) {
-
-                $query->whereIn('id', $category_ids);
+                $query->whereIn('id', $tag_s);
 
             });
 
