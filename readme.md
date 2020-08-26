@@ -70,3 +70,9 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Documentation
+
+1. Retrieve dishes for the specific restaurant , use URI : api/v1/dishes/getByVendor/{vendor}
+2. Make order and list orders, use URI : api/v1/orders
+3. Filtering using Tags for retrieve vendor, use URI : api/v1/vendors?tags[]=promo&tags[]=featured 
